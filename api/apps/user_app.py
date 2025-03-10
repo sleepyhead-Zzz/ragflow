@@ -514,7 +514,7 @@ def user_register(user_id, user):
     LLM_DEFAULT_MODELS = {
         "chat_model": "erwan2/DeepSeek-Janus-Pro-7B",
         "embedding_model": "bge-m3",
-        "image2text_model": "erwan2/DeepSeek-Janus-Pro-7B"
+        "image2text_model": ""
     }
     tenant_llm = [
         {
@@ -538,7 +538,7 @@ def user_register(user_id, user):
                 {
             "tenant_id": user_id,
             "llm_factory": LLM_FACTORY,
-            "llm_name": LLM_DEFAULT_MODELS.get("image2text_model", "erwan2/DeepSeek-Janus-Pro-7B"),
+            "llm_name": LLM_DEFAULT_MODELS.get("image2text_model", ""),
             "model_type": "image2text_model",
             "api_key": API_KEY,
             "api_base": LLM_BASE_URL,
