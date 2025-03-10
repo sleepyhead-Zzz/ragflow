@@ -508,19 +508,55 @@ def user_register(user_id, user):
         "size": 0,
         "location": "",
     }
-    tenant_llm = []
-    for llm in LLMService.query(fid=settings.LLM_FACTORY):
-        tenant_llm.append(
-            {
-                "tenant_id": user_id,
-                "llm_factory": settings.LLM_FACTORY,
-                "llm_name": llm.llm_name,
-                "model_type": llm.model_type,
-                "api_key": settings.API_KEY,
-                "api_base": settings.LLM_BASE_URL,
-                "max_tokens": llm.max_tokens if llm.max_tokens else 8192
-            }
-        )
+    LLM_FACTORY = "Ollama"
+    API_KEY = "sk-xxxxxxxxxxxxx"
+    LLM_BASE_URL = "10.10.8.201"
+    LLM_DEFAULT_MODELS = {
+        "chat_model": "erwan2/DeepSeek-Janus-Pro-7B",
+        "embedding_model": "bge-m3",
+        "image2text_model": "erwan2/DeepSeek-Janus-Pro-7B"
+    }
+    tenant_llm = [
+        {
+            "tenant_id": user_id,
+            "llm_factory": LLM_FACTORY,
+            "llm_name": LLM_DEFAULT_MODELS.get("chat_model", "erwan2/DeepSeek-Janus-Pro-7B"),
+            "model_type": "chat",
+            "api_key": API_KEY,
+            "api_base": LLM_BASE_URL,
+            "max_tokens": 8192  # 默认最大 token
+        },
+        {
+            "tenant_id": user_id,
+            "llm_factory": LLM_FACTORY,
+            "llm_name": LLM_DEFAULT_MODELS.get("embedding_model", "bge-m3"),
+            "model_type": "embedding",
+            "api_key": API_KEY,
+            "api_base": LLM_BASE_URL,
+            "max_tokens": 8192
+        },
+                {
+            "tenant_id": user_id,
+            "llm_factory": LLM_FACTORY,
+            "llm_name": LLM_DEFAULT_MODELS.get("image2text_model", "erwan2/DeepSeek-Janus-Pro-7B"),
+            "model_type": "image2text_model",
+            "api_key": API_KEY,
+            "api_base": LLM_BASE_URL,
+            "max_tokens": 8192
+        },
+    ]
+    # for llm in LLMService.query(fid=settings.LLM_FACTORY):
+    #     tenant_llm.append(
+    #         {
+    #             "tenant_id": user_id,
+    #             "llm_factory": settings.LLM_FACTORY,
+    #             "llm_name": llm.llm_name,
+    #             "model_type": llm.model_type,
+    #             "api_key": settings.API_KEY,
+    #             "api_base": settings.LLM_BASE_URL,
+    #             "max_tokens": llm.max_tokens if llm.max_tokens else 8192
+    #         }
+    #     )
 
     if not UserService.save(**user):
         return
