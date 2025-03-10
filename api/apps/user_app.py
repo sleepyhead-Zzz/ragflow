@@ -484,11 +484,11 @@ def user_register(user_id, user):
     tenant = {
         "id": user_id,
         "name": user["nickname"] + "‘s Kingdom",
-        "llm_id": settings.CHAT_MDL,
-        "embd_id": settings.EMBEDDING_MDL,
+        "llm_id": "qwq@Ollama",
+        "embd_id": "bge-m3@Ollama",
         "asr_id": settings.ASR_MDL,
         "parser_ids": settings.PARSERS,
-        "img2txt_id": settings.IMAGE2TEXT_MDL,
+        "img2txt_id": "erwan2/DeepSeek-Janus-Pro-7B@Ollama",
         "rerank_id": settings.RERANK_MDL,
     }
     usr_tenant = {
