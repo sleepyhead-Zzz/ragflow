@@ -1,6 +1,5 @@
-import { ReactComponent as Avatars } from '@/assets/svg/login-avatars.svg';
 import SvgIcon from '@/components/svg-icon';
-import { Flex, Rate, Space, Typography } from 'antd';
+import { Flex, Typography } from 'antd';
 import classNames from 'classnames';
 
 import { useTranslate } from '@/hooks/common-hooks';
@@ -23,19 +22,6 @@ const LoginRightPanel = () => {
         <Text className={classNames(styles.pink, styles.loginDescription)}>
           {t('description')}
         </Text>
-        <Flex align="center" gap={16}>
-          <Avatars></Avatars>
-          <Flex vertical>
-            <Space>
-              <Rate disabled defaultValue={5} />
-              <span
-                className={classNames(styles.white, styles.loginRateNumber)}
-              >
-                5.0
-              </span>
-            </Space>
-          </Flex>
-        </Flex>
       </Flex>
     </section>
   );
