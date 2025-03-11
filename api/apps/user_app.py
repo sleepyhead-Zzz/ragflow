@@ -637,6 +637,7 @@ def user_add():
         "login_channel": "password",
         "last_login_time": get_format_time(),
         "is_superuser": False,
+        "language":"Chinese"
     }
 
     user_id = get_uuid()
