@@ -34,9 +34,6 @@ const LoginRightPanel = () => {
                 5.0
               </span>
             </Space>
-            <span className={classNames(styles.pink, styles.loginRateReviews)}>
-              {t('review')}
-            </span>
           </Flex>
         </Flex>
       </Flex>
